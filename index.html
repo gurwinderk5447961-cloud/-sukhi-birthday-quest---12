@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heart Collector Quest 💖</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe0f0, #ffc0cb);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      color: #d6336c;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff80ab; }
+      to { text-shadow: 0 0 20px #ff4081; }
+    }
+
+    #heartBtn {
+      background-color: #d6336c;
+      border: none;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      font-size: 2em;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ff80ab;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    #score {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 2em;
+      opacity: 0;
+      transform: scale(0);
+      transition: transform 0.6s ease-out, opacity 2s ease-out;
+    }
+
+    #scroll {
+      margin-top: 30px;
+      font-size: 1.8em;
+      color: #fff;
+      background: rgba(255, 105, 180, 0.2);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ff80ab;
+      animation: fadeIn 2s ease-in, glow 2s infinite alternate;
+      display: none;
+    }
+
+    #loveLetter {
+      margin-top: 50px;
+      font-size: 1.2em;
+      color: #d6336c;
+      background: #fff0f5;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #ff80ab;
+      display: none;
+      animation: fadeIn 3s ease-in;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      white-space: pre-wrap;
+      text-align: left;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Heart Collector Quest 💘 For Sukhi</h1>
+  <button id="heartBtn">💖</button>
+  <div id="score">Hearts Collected: 0</div>
+  <div id="scroll">"Each heart you collect is a promise of my love."</div>
+  <div id="loveLetter">
+<strong>💌 Dear Sukhi 💖,</strong>
+
+You are the second girl—after my mom—for whom I’ve ever written a letter like this. That alone should tell you how deeply you live in my heart.
+
+Today is your birthday—but to me, it’s more than just a celebration of the day you were born. It’s a celebration of every moment you’ve made brighter, every smile you’ve shared, and every heartbeat that’s echoed in mine since you came into my life.
+
+Sukhi, I love you.
+
+I still remember the day I first saw you in 8th class. You were sitting there, unaware of how deeply you'd imprint yourself on my heart. That moment—it was quiet, but powerful. A feeling I’ve never forgotten.
+
+Then came the day I saw Yuvraj ask you to be Ishwinder’s girlfriend. I didn’t know what to do with the ache in my chest. I stayed silent, but inside, I was breaking. Not because I was angry—but because I realized how much you meant to me. Even when I couldn’t say it, even when I had to watch from a distance… you were everything.
+
+I tried to forget you. I told myself I had to. I was angry—angry at myself, at the situation, at the silence between us. But then one day, Ishu, Lovepreet, and I were talking, and they teased me, saying you were looking at me. I knew they were joking, but they also knew the truth: how I felt about you, even when I tried to hide it.
+
+As we moved into 9th and 10th class, I thought those feelings had faded. I felt normal around you. I convinced myself that I had nothing left in my heart. But then came that moment—when Lovepreet spilled water on your face, and I saw you crying. Something inside me snapped. I was furious. And when you left the class, Lovepreet and I started fighting. I didn’t even know why. But in that moment, I realized: my feelings hadn’t disappeared. They had grown with me.
+
+So I started creating distance. Not because I didn’t care—but because I cared too much. And when you began talking to Amit, I felt something I hadn’t expected: jealousy. It hit me hard. But by the time we reached 11th class, I had learned to quiet my heart. I told myself, “I’m not for her.” And maybe that’s true.
+
+But even now, even after all this time, I want you to know something I’ve never said out loud:
+
+Sukhi, I love you. I always have.
+
+I know you may never read this whole letter. I know you may never feel the same. But this is my truth, and I needed you to hear it—even if only once.
+
+Forever yours,  
+Prince 💖
+  </div>
+
+  <script>
+    let score = 0;
+    const heartBtn = document.getElementById("heartBtn");
+    const scoreDisplay = document.getElementById("score");
+    const scroll = document.getElementById("scroll");
+    const loveLetter = document.getElementById("loveLetter");
+
+    heartBtn.addEventListener("click", () => {
+      score++;
+      scoreDisplay.textContent = `Hearts Collected: ${score}`;
+      spawnHeart();
+
+      if (score === 10) {
+        scroll.style.display = "block";
+      }
+
+      if (score === 20) {
+        loveLetter.style.display = "block";
+      }
+    });
+
+    function spawnHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.textContent = "💘";
+      heart.style.left = `${Math.random() * window.innerWidth}px`;
+      heart.style.top = `${Math.random() * window.innerHeight}px`;
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.style.opacity = "1";
+        heart.style.transform = "scale(1.5)";
+      }, 50);
+
+      setTimeout(() => {
+        heart.style.opacity = "0";
+        heart.remove();
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
